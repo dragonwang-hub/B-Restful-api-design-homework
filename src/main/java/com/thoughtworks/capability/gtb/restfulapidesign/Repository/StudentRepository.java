@@ -31,10 +31,11 @@ public class StudentRepository {
     }
 
     public void removeById(AtomicInteger id) {
-        studentList.remove(id);
+        Student student = findById(id);
+        studentList.remove(student);
     }
 
-    public Student updateById(AtomicInteger id) {
-        studentList.
+    public Student updateById(AtomicInteger id, Student student) {
+
     }
 }

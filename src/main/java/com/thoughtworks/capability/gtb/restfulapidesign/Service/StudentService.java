@@ -33,7 +33,7 @@ public class StudentService {
         studentRepository.removeById(id);
     }
 
-    public Student updateStudentInfo(AtomicInteger id) {
-        return studentRepository.updateById(id);
+    public Student updateStudentInfo(AtomicInteger id, Student student) {
+        return studentRepository.updateById(id,student);
     }
 }

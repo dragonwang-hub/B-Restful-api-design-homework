@@ -51,7 +51,8 @@ public class StudentController {
 
     @PutMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Student updateStudentInfo(@PathVariable("id") AtomicInteger id){
-        return studentService.updateStudentInfo(id);
+    public Student updateStudentInfo(@PathVariable("id") AtomicInteger id,
+                                     @RequestBody Student student){
+        return studentService.updateStudentInfo(id,student);
     }
 }
