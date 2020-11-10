@@ -28,11 +28,13 @@ public class StudentController {
     @GetMapping("/students")
     @ResponseStatus(HttpStatus.OK)
     public List<Student> getStudents(){
+        return studentService.getStudent();
     }
 
     @PostMapping("/students")
     @ResponseStatus(HttpStatus.CREATED)
     public Student addStudentInfo(@RequestBody Student student){
+        return studentService.addStudent(student);
     }
 
     @GetMapping("/students/{id}")
