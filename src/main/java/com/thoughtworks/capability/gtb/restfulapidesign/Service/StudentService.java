@@ -34,6 +34,6 @@ public class StudentService {
     }
 
     public Student updateStudentInfo(AtomicInteger id) {
-
+        return studentRepository.updateById(id);
     }
 }

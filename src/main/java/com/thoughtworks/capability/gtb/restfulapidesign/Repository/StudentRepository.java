@@ -33,4 +33,8 @@ public class StudentRepository {
     public void removeById(AtomicInteger id) {
         studentList.remove(id);
     }
+
+    public Student updateById(AtomicInteger id) {
+        studentList.
+    }
 }
