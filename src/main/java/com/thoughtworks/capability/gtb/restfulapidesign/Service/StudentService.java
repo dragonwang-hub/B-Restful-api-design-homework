@@ -21,7 +21,7 @@ public class StudentService {
         return studentRepository.getStudentList();
     }
 
-    public Student addStudent(Student student) {
+    public Student addStudentInfo(Student student) {
         List<Student> studentList = studentRepository.getStudentList();
         studentList.add(student);
         studentRepository.setStudentList(studentList);
@@ -29,6 +29,10 @@ public class StudentService {
     }
 
     public Student getStudentInfo(AtomicInteger id) {
-        return studentRepository.findByID(id);
+        return studentRepository.findById(id);
+    }
+
+    public void removeStudentInfo(AtomicInteger id) {
+        studentRepository.removeById(id);
     }
 }

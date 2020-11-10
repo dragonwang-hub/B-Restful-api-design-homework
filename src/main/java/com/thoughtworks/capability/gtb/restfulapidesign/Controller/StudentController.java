@@ -34,7 +34,7 @@ public class StudentController {
     @PostMapping("/students")
     @ResponseStatus(HttpStatus.CREATED)
     public Student addStudentInfo(@RequestBody Student student){
-        return studentService.addStudent(student);
+        return studentService.addStudentInfo(student);
     }
 
     @GetMapping("/students/{id}")
@@ -45,8 +45,8 @@ public class StudentController {
 
     @DeleteMapping("/students/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Student removeStudentInfo(@PathVariable("id") AtomicInteger id){
-
+    public void removeStudentInfo(@PathVariable("id") AtomicInteger id){
+        studentService.removeStudentInfo(id);
     }
 
     @PutMapping("/students/{id}")

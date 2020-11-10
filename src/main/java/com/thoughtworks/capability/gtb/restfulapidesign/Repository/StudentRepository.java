@@ -20,7 +20,11 @@ public class StudentRepository {
         return studentList;
     }
 
-    public Student findByID(AtomicInteger id){
+    public Student findById(AtomicInteger id) {
         return studentList.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
+    }
+
+    public void removeById(AtomicInteger id) {
+        studentList.remove(id);
     }
 }
