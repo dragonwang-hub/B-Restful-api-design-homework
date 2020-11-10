@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class StudentService {
@@ -16,7 +17,7 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    public List<Student> getStudent() {
+    public List<Student> getStudents() {
         return studentRepository.getStudentList();
     }
 
@@ -25,5 +26,9 @@ public class StudentService {
         studentList.add(student);
         studentRepository.setStudentList(studentList);
         return student;
+    }
+
+    public Student getStudentInfo(AtomicInteger id) {
+        return studentRepository.findByID(id);
     }
 }

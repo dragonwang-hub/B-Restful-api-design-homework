@@ -28,7 +28,7 @@ public class StudentController {
     @GetMapping("/students")
     @ResponseStatus(HttpStatus.OK)
     public List<Student> getStudents(){
-        return studentService.getStudent();
+        return studentService.getStudents();
     }
 
     @PostMapping("/students")
@@ -40,7 +40,7 @@ public class StudentController {
     @GetMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Student getStudentInfo(@PathVariable("id") AtomicInteger id){
-
+        return studentService.getStudentInfo(id);
     }
 
     @DeleteMapping("/students/{id}")

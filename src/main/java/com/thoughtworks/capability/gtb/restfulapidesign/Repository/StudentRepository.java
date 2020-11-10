@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Repository
 public class StudentRepository {
@@ -16,5 +18,9 @@ public class StudentRepository {
 
     public List<Student> getStudentList() {
         return studentList;
+    }
+
+    public Student findByID(AtomicInteger id){
+        return studentList.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
     }
 }
