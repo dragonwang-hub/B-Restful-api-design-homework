@@ -22,10 +22,7 @@ public class StudentService {
     }
 
     public Student addStudentInfo(Student student) {
-        List<Student> studentList = studentRepository.getStudentList();
-        studentList.add(student);
-        studentRepository.setStudentList(studentList);
-        return student;
+        return studentRepository.save(student);
     }
 
     public Student getStudentInfo(AtomicInteger id) {
@@ -34,5 +31,9 @@ public class StudentService {
 
     public void removeStudentInfo(AtomicInteger id) {
         studentRepository.removeById(id);
+    }
+
+    public Student updateStudentInfo(AtomicInteger id) {
+
     }
 }
