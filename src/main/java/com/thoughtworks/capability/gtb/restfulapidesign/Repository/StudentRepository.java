@@ -25,7 +25,6 @@ public class StudentRepository {
         return student;
     }
 
-
     public Student findById(AtomicInteger id) {
         return studentList.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
     }

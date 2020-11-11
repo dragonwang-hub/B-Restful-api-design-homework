@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,8 +32,8 @@ public class GroupController {
 
     @PatchMapping("/groups/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Group updateGroupInfo(@PathVariable("id") AtomicInteger id) {
-
+    public Group updateGroupName(@PathVariable("id") AtomicInteger id, @RequestBody Group group) {
+        return groupService.updateGroupName(id, group);
     }
 
     @GetMapping("/groups/shuffle")
