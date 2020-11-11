@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.Controller;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.Dto.Group;
+import com.thoughtworks.capability.gtb.restfulapidesign.Dto.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.Service.GroupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,8 @@ public class GroupController {
 
     @GetMapping("/groups")
     @ResponseStatus(HttpStatus.OK)
-    public List<Group> getGroups() {
-
+    public Map<Group, List<Student>> getGroups() {
+        return groupService.getGroups();
     }
 
     @PatchMapping("/groups/{id}")
