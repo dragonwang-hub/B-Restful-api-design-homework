@@ -13,4 +13,9 @@ public class Group {
     private AtomicInteger id;
     private String name;
     private String note;
+
+    public Group(AtomicInteger id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

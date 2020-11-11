@@ -38,9 +38,7 @@ public class GroupController {
 
     @GetMapping("/groups/shuffle")
     @ResponseStatus(HttpStatus.OK)
-    public Map<Group, List<Group>> shuffleGroups() {
-
+    public Map<Group, List<Student>> shuffleGroups() {
+        return groupService.shuffleGroups();
     }
-
-
 }
