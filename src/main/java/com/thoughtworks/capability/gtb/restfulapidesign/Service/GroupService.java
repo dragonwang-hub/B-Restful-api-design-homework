@@ -29,10 +29,10 @@ public class GroupService {
         return groupRepository.getGroupMap();
     }
 
-    public Group updateGroupName(AtomicInteger id, Group group) {
+    public Group updateGroupName(int id, Group group) {
         Map<Group, List<Student>> groups = groupRepository.getGroupMap();
         Group srcGroup = groups.keySet().stream()
-                .filter(key -> key.getId().equals(id)).collect(Collectors.toList()).get(0);
+                .filter(key -> key.getId().get() == id).collect(Collectors.toList()).get(0);
         List<Student> students = groups.get(srcGroup);
         groups.remove(srcGroup);
         srcGroup.setName(group.getName());
@@ -52,10 +52,13 @@ public class GroupService {
                 String groupsName = i + " 组";
                 Group group = new Group(groupsId, groupsName);
                 List<Student> iGroupList;
-                if (!studentGroup.containsKey(group)) {
+                List<Group> findGroup = studentGroup.keySet().stream()
+                        .filter(key -> key.getId().get() == group.getId().get())
+                        .collect(Collectors.toList());
+                if (findGroup.size() == 0) {
                     iGroupList = new ArrayList<>();
                 } else {
-                    iGroupList = studentGroup.get(group);
+                    iGroupList = studentGroup.get(findGroup.get(0));
                 }
                 if (tempAll.size() == 0) {
                     break;
@@ -63,9 +66,13 @@ public class GroupService {
                 int n = random.nextInt(tempAll.size());
                 iGroupList.add(tempAll.get(n));
                 tempAll.remove(tempAll.get(n));
+                if (findGroup.size() != 0) {
+                    studentGroup.remove(findGroup.get(0));
+                }
                 studentGroup.put(group, iGroupList);
             }
         }
+        groupRepository.setGroupMap(studentGroup);
         return studentGroup;
     }
 }

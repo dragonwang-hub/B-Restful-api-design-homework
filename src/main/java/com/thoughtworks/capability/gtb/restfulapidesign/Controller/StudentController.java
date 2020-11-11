@@ -39,20 +39,20 @@ public class StudentController {
 
     @GetMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Student getStudentInfo(@PathVariable("id") AtomicInteger id){
-        return studentService.getStudentInfo(id);
+    public Student getStudentInfo(@PathVariable("id") int id) throws Exception {
+        return studentService.getStudentInfo(new AtomicInteger(id));
     }
 
     @DeleteMapping("/students/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeStudentInfo(@PathVariable("id") AtomicInteger id){
-        studentService.removeStudentInfo(id);
+    public void removeStudentInfo(@PathVariable("id") int id) throws Exception {
+        studentService.removeStudentInfo(new AtomicInteger(id));
     }
 
     @PutMapping("/students/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Student updateStudentInfo(@PathVariable("id") AtomicInteger id,
-                                     @RequestBody Student student){
-        return studentService.updateStudentInfo(id,student);
+    public Student updateStudentInfo(@PathVariable("id") int id,
+                                     @RequestBody Student student) throws Exception {
+        return studentService.updateStudentInfo(new AtomicInteger(id),student);
     }
 }

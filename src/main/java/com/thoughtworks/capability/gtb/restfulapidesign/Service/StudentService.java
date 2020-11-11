@@ -25,15 +25,15 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Student getStudentInfo(AtomicInteger id) {
+    public Student getStudentInfo(AtomicInteger id) throws Exception {
         return studentRepository.findById(id);
     }
 
-    public void removeStudentInfo(AtomicInteger id) {
+    public void removeStudentInfo(AtomicInteger id) throws Exception {
         studentRepository.removeById(id);
     }
 
-    public Student updateStudentInfo(AtomicInteger id, Student student) {
+    public Student updateStudentInfo(AtomicInteger id, Student student) throws Exception {
         return studentRepository.updateById(id,student);
     }
 }

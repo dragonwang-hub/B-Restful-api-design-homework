@@ -21,20 +21,33 @@ public class StudentRepository {
     }
 
     public Student save(Student student) {
+        AtomicInteger newId = new AtomicInteger();
+        if(studentList.size()>0){
+            newId.set(studentList.get(studentList.size()-1).getId().get()+1);
+        }else{
+            newId.set(1);
+        }
+        student.setId(newId);
         studentList.add(student);
         return student;
     }
 
-    public Student findById(AtomicInteger id) {
-        return studentList.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList()).get(0);
+    public Student findById(AtomicInteger id) throws Exception {
+        List<Student> findStudent = studentList.stream()
+                .filter(student -> student.getId().get() == (id.get()))
+                .collect(Collectors.toList());
+        if (findStudent.size() == 0) {
+            throw new Exception();
+        }
+        return findStudent.get(0);
     }
 
-    public void removeById(AtomicInteger id) {
+    public void removeById(AtomicInteger id) throws Exception {
         Student student = findById(id);
         studentList.remove(student);
     }
 
-    public Student updateById(AtomicInteger id, Student student) {
+    public Student updateById(AtomicInteger id, Student student) throws Exception {
         removeById(id);
         student.setId(id);
         return save(student);

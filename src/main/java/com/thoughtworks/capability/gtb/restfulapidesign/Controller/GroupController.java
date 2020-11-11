@@ -32,7 +32,7 @@ public class GroupController {
 
     @PatchMapping("/groups/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Group updateGroupName(@PathVariable("id") AtomicInteger id, @RequestBody Group group) {
+    public Group updateGroupName(@PathVariable("id") int id, @RequestBody Group group) {
         return groupService.updateGroupName(id, group);
     }
 
