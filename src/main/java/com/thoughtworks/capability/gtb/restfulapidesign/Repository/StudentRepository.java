@@ -36,6 +36,8 @@ public class StudentRepository {
     }
 
     public Student updateById(AtomicInteger id, Student student) {
-
+        removeById(id);
+        student.setId(id);
+        return save(student);
     }
 }
